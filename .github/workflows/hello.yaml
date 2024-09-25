@@ -1,0 +1,21 @@
+name: Hello
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  hello:
+    name: Hello
+    runs-on: ubuntu-latest
+    environment: "dev"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Print secrets
+        run: |
+          echo "app name: ${{ vars.APP_NAME }}"
+          echo '${{ secrets.SECRET_KEY }}-aaa'
